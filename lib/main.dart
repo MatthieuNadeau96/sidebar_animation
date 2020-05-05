@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidebar_animation/sidebar/sidebar_layout.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,22 +20,22 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MyHomePage(),
+      home: SidebarLayout(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-      child: Text('Hello'),
-    ));
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         body: Center(
+//       child: Text('Hello' ),
+//     ));
+//   }
+// }
