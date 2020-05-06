@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xffF79D73),
         accentColor: Color(0xffA6C2A7),
         canvasColor: Color(0xffF7F6F1),
+        primaryColorDark: Color(0xffB2CDE4),
         textTheme: TextTheme(
-          body1: TextStyle(
+          bodyText1: TextStyle(
             color: Color(0xff2D2D2D),
           ),
         ),

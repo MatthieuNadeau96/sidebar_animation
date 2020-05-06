@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:sidebar_animation/sidebar/menu_item.dart';
 
 class Sidebar extends StatefulWidget {
   @override
@@ -96,7 +97,44 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                         height: 64,
                         indent: 32,
                         endIndent: 32,
-                      )
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(
+                          children: <Widget>[
+                            MenuItem(
+                              title: 'Home',
+                              icon: Icons.home,
+                            ),
+                            MenuItem(
+                              title: 'About',
+                              icon: Icons.person,
+                            ),
+                            MenuItem(
+                              title: 'Orders',
+                              icon: Icons.shopping_cart,
+                            ),
+                            MenuItem(
+                              title: 'Wishlist',
+                              icon: Icons.card_giftcard,
+                            ),
+                            Divider(
+                              color: themeData.canvasColor.withOpacity(0.3),
+                              height: 64,
+                              indent: 32,
+                              endIndent: 32,
+                            ),
+                            MenuItem(
+                              title: 'Settings',
+                              icon: Icons.settings,
+                            ),
+                            MenuItem(
+                              title: 'Logout',
+                              icon: Icons.exit_to_app,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
