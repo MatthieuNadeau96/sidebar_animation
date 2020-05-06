@@ -48,6 +48,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
     final screenWidth = MediaQuery.of(context).size.width;
 
     return StreamBuilder<bool>(
@@ -64,7 +65,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
             children: <Widget>[
               Expanded(
                 child: Container(
-                  color: Theme.of(context).primaryColor,
+                  color: themeData.primaryColor,
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 100),
@@ -86,9 +87,15 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                         leading: CircleAvatar(
                           child: Icon(Icons.perm_identity),
                           radius: 40,
-                          backgroundColor: Theme.of(context).canvasColor,
-                          foregroundColor: Theme.of(context).primaryColor,
+                          backgroundColor: themeData.canvasColor,
+                          foregroundColor: themeData.primaryColor,
                         ),
+                      ),
+                      Divider(
+                        color: themeData.canvasColor.withOpacity(0.3),
+                        height: 64,
+                        indent: 32,
+                        endIndent: 32,
                       )
                     ],
                   ),
