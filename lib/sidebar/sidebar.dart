@@ -145,16 +145,19 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
                   onTap: () {
                     onIconPressed();
                   },
-                  child: Container(
-                    height: 110,
-                    width: 35,
-                    color: Theme.of(context).primaryColor,
-                    alignment: Alignment.centerLeft,
-                    child: AnimatedIcon(
-                      progress: _animationController.view,
-                      icon: AnimatedIcons.menu_close,
-                      color: Theme.of(context).canvasColor,
-                      size: 25,
+                  child: ClipPath(
+                    clipper: CustomMenuClipper(),
+                    child: Container(
+                      height: 110,
+                      width: 35,
+                      color: Theme.of(context).primaryColor,
+                      alignment: Alignment.centerLeft,
+                      child: AnimatedIcon(
+                        progress: _animationController.view,
+                        icon: AnimatedIcons.menu_close,
+                        color: Theme.of(context).canvasColor,
+                        size: 25,
+                      ),
                     ),
                   ),
                 ),
@@ -164,5 +167,34 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
         );
       },
     );
+  }
+}
+
+class CustomMenuClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Paint paint = Paint();
+    paint.color = Color(0xffF7F6F1);
+
+    final width = size.width;
+    final height = size.height;
+
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.quadraticBezierTo(0, 8, 10, 16);
+    path.quadraticBezierTo(width - 1, height / 2 - 20, width, height / 2);
+    path.quadraticBezierTo(width + 1, height / 2 + 20, 10, height - 16);
+    path.quadraticBezierTo(0, height - 8, 0, height);
+
+    path.close();
+
+    return path;
+    // throw UnimplementedError();
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    // throw UnimplementedError();
+    return true;
   }
 }
