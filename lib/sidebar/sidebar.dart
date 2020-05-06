@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 
 class Sidebar extends StatefulWidget {
   @override
@@ -7,6 +10,10 @@ class Sidebar extends StatefulWidget {
 
 class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
   AnimationController _animationController;
+  StreamController<bool> isSideBarOpenedStreamController;
+  Stream<bool> isSideBarOpenedStream;
+  StreamSink<bool> isSideBarOpenedSink;
+
   final bool isSidebarOpened = false;
   final _animationDuration = Duration(milliseconds: 500);
 
@@ -15,12 +22,17 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController =
         AnimationController(vsync: this, duration: _animationDuration);
+    isSideBarOpenedStreamController = PublishSubject<bool>();
+    isSideBarOpenedStream = isSideBarOpenedStreamController.stream;
+    isSideBarOpenedSink = isSideBarOpenedStreamController.sink;
   }
 
   @override
   void dispose() {
     super.dispose();
     _animationController.dispose();
+    isSideBarOpenedStreamController.close();
+    isSideBarOpenedSink.close();
   }
 
   @override
@@ -45,6 +57,13 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
               height: 110,
               width: 35,
               color: Theme.of(context).primaryColor,
+              alignment: Alignment.centerLeft,
+              child: AnimatedIcon(
+                progress: _animationController.view,
+                icon: AnimatedIcons.menu_close,
+                color: Theme.of(context).canvasColor,
+                size: 25,
+              ),
             ),
           )
         ],
