@@ -58,13 +58,40 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           duration: _animationDuration,
           top: 0,
           bottom: 0,
-          left: isSideBarOpenedAsync.data ? 0 : 0,
+          left: isSideBarOpenedAsync.data ? 0 : -screenWidth,
           right: isSideBarOpenedAsync.data ? 0 : screenWidth - 50,
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Container(
                   color: Theme.of(context).primaryColor,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 100),
+                      ListTile(
+                        title: Text(
+                          'Ralph',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        subtitle: Text(
+                          'ralph@gmail.com',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        leading: CircleAvatar(
+                          child: Icon(Icons.perm_identity),
+                          radius: 40,
+                          backgroundColor: Theme.of(context).canvasColor,
+                          foregroundColor: Theme.of(context).primaryColor,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Align(
